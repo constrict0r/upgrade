@@ -1,0 +1,11 @@
+ansible
+Jinja2
+molecule[docker]
+PyYAML
+requests
+setuptools
+sphinxcontrib-restbuilder
+sphinxcontrib-globalsubs
+sphinx-prompt
+Sphinx-Substitution-Extensions
+sphinx_rtd_theme

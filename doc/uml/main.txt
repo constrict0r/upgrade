@@ -1,0 +1,27 @@
+@startuml
+'Use plantuml to view this file as an image: http://plantuml.com'
+
+skinparam monochrome true
+
+start
+
+:Apply validations;
+
+if (validations passed?) then (yes)
+
+  :Set unified = upgrade + configuration.upgrade;
+
+  :Set perform_upgrade = unified[last] | bool;
+
+  if (perform_upgrade == True?) then (yes)
+    :Perform system full-upgrade;
+  else (no)
+  endif
+
+else (no)
+  :Show validation errors;
+endif
+
+end
+
+@enduml

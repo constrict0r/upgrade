@@ -1,0 +1,38 @@
+---
+- name: Display Role Details.
+  debug:
+    msg:
+      - '===================================================================='
+      - 'constrict0r.upgrade'
+      - 'Apply system upgrade.'
+      - '===================================================================='
+
+- name: Set perform_upgrade = true.
+  set_fact:
+    perform_upgrade: true
+
+- name: Get last and single unified variable.
+  set_fact:
+    perform_upgrade: "{{ unified | last }}"
+  with_items: "{{ unified }}"
+
+- name: Perform upgrade.
+  debug:
+    msg:
+      - '--------------------------------------------------------------------'
+      - 'Performing full-upgrade ...'
+      - '--------------------------------------------------------------------'
+  when:
+    - not ansible_check_mode
+    - perform_upgrade | bool
+
+- name: Full upgrade the system.
+  apt:
+    upgrade: full
+  become: true
+  register: result
+  retries: 2
+  until: result is success
+  when:
+    - not ansible_check_mode
+    - perform_upgrade | bool

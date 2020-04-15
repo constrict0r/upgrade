@@ -1,0 +1,39 @@
+---
+galaxy_info:
+  author: constrict0r
+  description: Apply system upgrade.
+  company: Amanita.
+
+  license: MIT.
+
+  min_ansible_version: 2.8
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+
+    - name: Ubuntu
+      version:
+        - xenial
+
+  galaxy_tags:
+    - auto
+    - autodebian
+    - debian
+    - devops
+    - doombots
+    - linux
+    - ubuntu
+
+dependencies:
+  - role: constrict0r.unify
+    validate: true
+    update: true
+    items:
+      - "{{ upgrade | default(true) }}"
+      - "{{ configuration | default([]) }}"
+    titles: 'upgrade'
+    expand: true
+    secondary: false
