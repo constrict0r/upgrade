@@ -19,8 +19,5 @@ before_script:
 script:
   - sudo bash -H -c './testme.sh -i -k'
 
-after_success:
-  - coveralls
-
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
