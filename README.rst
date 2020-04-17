@@ -167,7 +167,7 @@ This variable is set to *true* by default.
          upgrade: false
 
    # To a playbook from terminal.
-   ansible-playbook -i tests/inventory tests/test-playbook.yml -K -e \
+   ansible-playbook -i inventory my-playbook.yml -K -e \
        "upgrade=false"
 
 
